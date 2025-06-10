@@ -1,0 +1,138 @@
+
+
+/* --- Home Page Specific Styles --- */
+.home-gradient-bg {
+  // A subtle, professional gradient for the background
+  --background: linear-gradient(135deg, var(--ion-color-light) 0%, #e0f2f7 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; // Distribute space
+  padding-bottom: 20px; // Add some padding at the bottom
+}
+
+.hero-section {
+  flex-grow: 1; // Allow this section to take up available space
+  display: flex;
+  flex-direction: column;
+  justify-content: center; // Center content vertically
+  align-items: center; // Center content horizontally
+  text-align: center;
+  padding-top: 20%; // Adjust as needed, less top margin for better visual balance
+  padding-bottom: 20px;
+}
+
+.logo-placeholder {
+  font-size: 8rem; // Large icon for visual impact
+  color: var(--ion-color-primary); // Use primary color for the icon
+  margin-bottom: 20px;
+  // Optional: Add a subtle shadow or glow
+  filter: drop-shadow(0 5px 15px rgba(var(--ion-color-primary-rgb), 0.3));
+}
+
+h1 {
+  font-family: var(--ion-font-family);
+  font-size: 2.8rem; // Larger, more impactful heading
+  font-weight: 700; // Bolder
+  color: var(--ion-color-dark); // Use a darker, more professional color
+  margin-bottom: 1rem;
+  line-height: 1.2; // Better line spacing
+  padding: 0 15px; // Ensure padding for smaller screens
+}
+
+.description {
+  font-family: var(--ion-font-family);
+  font-size: 1.15rem; // Slightly larger for readability
+  color: var(--ion-color-dark);
+  opacity: 0.8; // Slightly less prominent
+  margin-bottom: 3rem; // More space before the button
+  padding: 0 25px; // More horizontal padding
+  max-width: 600px; // Limit width on larger screens for readability
+  line-height: 1.5;
+}
+
+.cta-section {
+  padding: 0 30px; // More padding for the button section
+  margin-bottom: 30px; // Space from bottom of screen
+}
+
+.primary-button-lg {
+  --background: var(--ion-color-primary); // Use primary color
+  --background-activated: var(--ion-color-primary-shade); // Darker on press
+  --background-hover: var(--ion-color-primary-tint); // Lighter on hover
+  --color: var(--ion-color-primary-contrast);
+  --border-radius: 16px; // Slightly larger border-radius for a softer look
+  height: 56px; // Taller button
+  font-size: 1.2rem; // Larger font size
+  font-weight: 600;
+  letter-spacing: 0.8px; // More relaxed letter spacing
+  text-transform: uppercase; // All caps for emphasis
+  box-shadow: 0 8px 20px rgba(var(--ion-color-primary-rgb), 0.3); // More prominent shadow
+  transition: all 0.3s ease-in-out; // Smooth transitions
+
+  ion-icon {
+    margin-inline-end: 10px; // Space between icon and text
+    font-size: 1.4rem; // Slightly larger icon
+  }
+
+  &:hover {
+    transform: translateY(-3px); // Subtle lift effect on hover
+    box-shadow: 0 12px 25px rgba(var(--ion-color-primary-rgb), 0.4);
+  }
+}
+
+.secondary-button-lg {
+  --color: var(--ion-color-primary); // Text color for outline button
+  --border-color: var(--ion-color-primary);
+  --border-width: 2px;
+  --background: transparent;
+  --background-activated: rgba(var(--ion-color-primary-rgb), 0.1);
+  --background-hover: rgba(var(--ion-color-primary-rgb), 0.05);
+  --border-radius: 16px;
+  height: 56px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* --- Animations (requires animate.css library) --- */
+/*
+  To use these animations, you'll need to install animate.css:
+  npm install animate.css --save
+
+  And then import it in your global styles (e.g., src/global.scss):
+  @import '~animate.css/animate.min.css';
+*/
+.animate__animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.animate__fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+
+.animate__delay-0-5s {
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+
+.animate__delay-1s {
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+}
+
+/* --- Toolbar Styling (in app.component.scss or global.scss if common) --- */
+ion-toolbar {
+  &.ion-no-border {
+    --border-width: 0; // Remove header border
+  }
+}
+.app-title {
+  font-family: var(--ion-font-family);
+  font-weight: 700; // Make title bolder
+  font-size: 1.3rem;
+}

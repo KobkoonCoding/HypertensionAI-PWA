@@ -1,0 +1,234 @@
+// /* Ensure global variables are accessible, possibly from src/theme/variables.scss */
+// :root {
+//   --ion-color-primary: #3498db;
+//   --ion-color-primary-rgb: 52, 152, 219;
+//   --ion-color-primary-contrast: #ffffff;
+//   --ion-color-primary-shade: #2e88c2;
+//   --ion-color-primary-tint: #48a4de;
+
+//   --ion-color-secondary: #2ecc71; // Fresh green
+//   --ion-color-secondary-rgb: 46, 204, 113;
+
+//   --ion-color-tertiary: #f39c12; // Orange for alerts/actions
+//   --ion-color-tertiary-rgb: 243, 156, 18;
+//   --ion-color-tertiary-contrast: #ffffff;
+
+//   --ion-color-success: #28a745; // Green for success button
+//   --ion-color-success-rgb: 40, 167, 69;
+//   --ion-color-success-contrast: #ffffff;
+//   --ion-color-success-shade: #24953f;
+//   --ion-color-success-tint: #3eaf59;
+
+//   --ion-color-light: #f8f9fa;
+//   --ion-color-dark: #34495e;
+//   --ion-color-medium: #95a5a6; // A neutral grey
+//   --ion-color-danger: #dc3545; // Red for error messages
+
+//   --ion-font-family: 'Open Sans', sans-serif; /* Or 'Roboto', 'Lato', etc. */
+// }
+
+.input-gradient-bg {
+  --background: linear-gradient(180deg, #e0f2f7 0%, var(--ion-color-light) 100%);
+}
+
+.header-visual {
+  padding: 30px 20px 20px;
+  text-align: center;
+  background: var(--ion-color-primary);
+  color: var(--ion-color-primary-contrast);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top left, rgba(255,255,255,0.1) 0%, transparent 70%);
+    opacity: 0.7;
+    z-index: 0;
+  }
+}
+
+.main-icon {
+  font-size: 5rem;
+  color: var(--ion-color-secondary);
+  margin-bottom: 10px;
+  filter: drop-shadow(0 3px 10px rgba(var(--ion-color-secondary-rgb), 0.4));
+}
+
+h1 {
+  font-family: var(--ion-font-family);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.3;
+  color: var(--ion-color-primary-contrast);
+  position: relative;
+}
+
+.intro-text {
+  font-family: var(--ion-font-family);
+  font-size: 1rem;
+  color: rgba(var(--ion-color-primary-contrast-rgb), 0.9);
+  margin-bottom: 0;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+form {
+  padding: 0 15px; // Padding around the form sections
+}
+
+.form-section-card {
+  margin-bottom: 20px; // Space between cards
+  border-radius: 18px; // Consistent card radius
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); // Stronger shadow for cards
+  --background: #ffffff; // Card background
+
+  ion-card-header {
+    padding-bottom: 0; // Reduce default padding
+  }
+
+  ion-card-title {
+    font-family: var(--ion-font-family);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ion-color-dark);
+  }
+
+  ion-card-subtitle {
+    font-family: var(--ion-font-family);
+    font-size: 0.9rem;
+    color: var(--ion-color-medium);
+    margin-top: 5px;
+  }
+
+  ion-card-content {
+    padding-top: 0; // Adjust padding
+  }
+}
+
+.input-item {
+  --padding-start: 10px; // Internal padding for input items
+  --inner-padding-end: 10px;
+  margin-bottom: 15px; // Space between input items
+  border-radius: 12px; // Rounded corners for individual inputs
+  --background: var(--ion-color-light); // Light background for inputs
+  border: 1px solid var(--ion-color-medium); // Subtle border
+  transition: all 0.2s ease-in-out;
+
+  &:last-of-type {
+    margin-bottom: 0; // No margin for the last item in a card
+  }
+
+  ion-label {
+    font-weight: 600; // Bolder label
+    font-size: 0.9rem;
+    color: var(--ion-color-dark);
+    margin-bottom: 5px; // Space between label and input
+  }
+
+  ion-input, ion-select {
+    font-size: 1.1rem; // Larger input text
+    color: var(--ion-color-dark);
+    --padding-top: 10px; // Ionic specific padding
+    --padding-bottom: 10px;
+  }
+
+  // Styles for invalid fields
+  &.ion-invalid.ion-touched {
+    border-color: var(--ion-color-danger); // Red border for invalid touched fields
+    box-shadow: 0 0 0 2px rgba(var(--ion-color-danger-rgb), 0.2); // Subtle red glow
+  }
+
+  ion-note {
+    font-size: 0.8rem;
+    padding-top: 5px;
+  }
+
+  // Info button next to label
+  ion-button[slot="end"] {
+    --padding-start: 0;
+    --padding-end: 0;
+    margin: 0;
+    ion-icon {
+      font-size: 1.4rem;
+      color: var(--ion-color-medium);
+    }
+  }
+}
+
+// Popover content styling
+.popover-content {
+  padding: 15px;
+  font-family: var(--ion-font-family);
+  p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: var(--ion-color-dark);
+    margin: 0;
+  }
+  strong {
+    color: var(--ion-color-primary); // Highlight info title
+  }
+}
+
+.submit-button {
+  --background: var(--ion-color-success);
+  --background-activated: var(--ion-color-success-shade);
+  --background-hover: var(--ion-color-success-tint);
+  --color: var(--ion-color-success-contrast);
+  --border-radius: 16px;
+  height: 56px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 20px rgba(var(--ion-color-success-rgb), 0.3);
+  transition: all 0.3s ease-in-out;
+  margin-top: 30px; // More space above button
+  margin-bottom: 30px; // More space below button
+
+  ion-icon {
+    margin-inline-end: 10px;
+    font-size: 1.4rem;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(var(--ion-color-success-rgb), 0.4);
+  }
+
+  &.ion-activated {
+    transform: scale(0.98); // Slight press effect
+  }
+
+  &.ion-disabled {
+    opacity: 0.6; // Slightly dim when disabled
+    box-shadow: none;
+    transform: none;
+  }
+}
+
+
+/* Ensure these are still in app.component.scss or global.scss */
+ion-toolbar {
+  &.ion-no-border {
+    --border-width: 0;
+  }
+}
+.app-title {
+  font-family: var(--ion-font-family);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--ion-color-primary-contrast);
+}

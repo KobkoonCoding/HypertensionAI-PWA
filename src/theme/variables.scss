@@ -1,0 +1,29 @@
+/* --- Global Variables for Theming (Can be moved to src/theme/variables.scss for app-wide use) --- */
+:root {
+  --ion-color-primary: #3498db; // A vibrant blue
+  --ion-color-primary-rgb: 52, 152, 219;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #2e88c2;
+  --ion-color-primary-tint: #48a4de;
+
+  --ion-color-secondary: #2ecc71; // A fresh green for actions
+  --ion-color-secondary-rgb: 46, 204, 113;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #28b865;
+  --ion-color-secondary-tint: #42d681;
+
+  --ion-color-tertiary: #f39c12; // An accent color for warnings/highlights
+  --ion-color-tertiary-rgb: 243, 156, 18;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #da8a10;
+  --ion-color-tertiary-tint: #f4a629;
+
+  --ion-color-light: #f8f9fa; // Light background
+  --ion-color-dark: #34495e; // Dark text/elements
+
+  // Custom global fonts
+  --ion-font-family: 'Open Sans', sans-serif; // Or 'Roboto', 'Lato', etc. - import from Google Fonts
+}

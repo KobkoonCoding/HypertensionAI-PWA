@@ -1,0 +1,50 @@
+<ion-menu contentId="main-content" type="overlay" side="start" class="custom-menu">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-toggle>
+          <ion-button fill="clear" color="light">
+            <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-menu-toggle>
+      </ion-buttons>
+      <ion-title class="text-center">เมนูหลัก</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="menu-content">
+    <ion-list lines="none" class="menu-list">
+
+      <ion-menu-toggle auto-hide="true">
+        <ion-item routerLink="/" routerDirection="root" detail="false">
+          <ion-icon name="home-outline" slot="start"></ion-icon>
+          <ion-label>หน้าหลัก</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle auto-hide="true">
+        <ion-item routerLink="/input" routerDirection="forward" detail="false">
+          <ion-icon name="heart-circle-outline" slot="start"></ion-icon>
+          <ion-label>ประเมินโรค Hypertension</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle auto-hide="true">
+        <ion-item routerLink="/care" routerDirection="forward" detail="false">
+          <ion-icon name="medkit-outline" slot="start"></ion-icon>
+          <ion-label>คำแนะนำหลังทราบผล</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle auto-hide="true">
+        <ion-item routerLink="/contact" routerDirection="forward" detail="false">
+          <ion-icon name="call-outline" slot="start"></ion-icon>
+          <ion-label>ติดต่อเรา</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-router-outlet id="main-content"></ion-router-outlet>

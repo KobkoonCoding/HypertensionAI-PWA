@@ -1,0 +1,69 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center app-title">คำแนะนำหลังทราบผล</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="care-gradient-bg">
+  <div class="header-visual animate__animated animate__fadeInDown">
+    <ion-icon name="medkit-outline" class="main-icon"></ion-icon>
+    <h1 class="ion-text-center">สุขภาพที่ดี เริ่มต้นที่นี่!</h1>
+    <p class="ion-text-center intro-text">
+      เรียนรู้คำแนะนำเบื้องต้นที่สำคัญ เพื่อดูแลสุขภาพของคุณให้แข็งแรงและลดความเสี่ยง
+    </p>
+  </div>
+
+  <div class="care-cards-container ion-padding">
+    <ion-card *ngIf="riskLevelText" class="risk-level-summary-card animate__animated animate__fadeInUp animate__delay-0-1s">
+      <ion-card-header>
+        <ion-card-title class="ion-text-center" [ngClass]="{'low-medium-risk-text': currentRiskLevel === 'low', 'high-risk-text': currentRiskLevel === 'high'}">
+          ผลการประเมิน: {{ riskLevelText }}
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="ion-text-center">
+        <p *ngIf="currentRiskLevel === 'low'">
+          คุณควรเน้นการส่งเสริมสุขภาพและเฝ้าระวัง เพื่อป้องกันไม่ให้เข้าสู่กลุ่มเสี่ยงสูง.
+        </p>
+        <p *ngIf="currentRiskLevel === 'high'">
+          คุณควรปรึกษาแพทย์และเริ่มต้นการดูแลอย่างใกล้ชิด เพื่อควบคุมความดันโลหิตโดยเร็วที่สุด.
+        </p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="care-card animate__animated animate__fadeInUp" *ngFor="let rec of filteredRecommendations; let i = index" [style.--animate-delay]="(0.3 + i * 0.1) + 's'">
+      <ion-card-header>
+        <ion-icon [name]="rec.icon"></ion-icon>
+        <ion-card-title>{{ rec.title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{ rec.description }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- <ion-card class="care-card call-to-action-card animate__animated animate__fadeInUp" [style.--animate-delay]="(0.3 + filteredRecommendations.length * 0.1) + 's'">
+      <ion-card-header>
+        <ion-icon name="alert-circle-outline"></ion-icon>
+        <ion-card-title>ปรึกษาแพทย์</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>หากมีอาการผิดปกติหรือข้อสงสัยใดๆ โปรดปรึกษาแพทย์ผู้เชี่ยวชาญทันที.</p>
+        <ion-button expand="block" fill="clear" color="tertiary" class="call-doctor-button" routerLink="/contact">
+          <ion-icon slot="start" name="call-outline"></ion-icon>
+          โทรปรึกษาแพทย์
+        </ion-button>
+      </ion-card-content>
+    </ion-card> -->
+
+    <div class="footer-section ion-text-center animate__animated animate__fadeInUp" [style.--animate-delay]="(0.3 + (filteredRecommendations.length + 1) * 0.1) + 's'">
+      <p>ข้อมูลนี้เป็นคำแนะนำเบื้องต้น โปรดปรึกษาผู้เชี่ยวชาญทางการแพทย์เพื่อคำแนะนำเฉพาะบุคคล</p>
+      <ion-button fill="clear" routerLink="/contact" class="secondary-info-button">
+        <ion-icon slot="start" name="information-circle-outline"></ion-icon>
+        ติดต่อเรา
+      </ion-button>
+    </div>
+
+  </div>
+</ion-content>

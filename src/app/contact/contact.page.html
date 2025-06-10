@@ -1,0 +1,72 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center app-title">ติดต่อเรา</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="contact-gradient-bg">
+  <div class="header-visual animate__animated animate__fadeInDown">
+    <ion-icon name="chatbubbles-outline" class="main-icon"></ion-icon>
+    <h1 class="ion-text-center">เราพร้อมช่วยเหลือคุณเสมอ</h1>
+    <p class="ion-text-center intro-text">
+      หากมีข้อสงสัยหรือต้องการข้อมูลเพิ่มเติม โปรดติดต่อเราตามช่องทางด้านล่างนี้
+    </p>
+  </div>
+
+  <ion-list class="contact-details-list ion-no-padding">
+    <ion-item lines="none" class="contact-item animate__animated animate__fadeInUp animate__delay-0-3s">
+      <ion-icon slot="start" name="business-outline"></ion-icon>
+      <ion-label>
+        <p class="item-label">ที่อยู่</p>
+        <p class="item-value">ภาควิชาคณิตศาสตร์ คณะวิทยาศาสตร์ มหาวิทยาลัยเชียงใหม่
+239 ถ.ห้วยแก้ว ต.สุเทพ อ.เมือง จ.เชียงใหม่ 50200</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item href="mailto:Suthep.s@cmu.ac.th" target="_blank" lines="none" class="contact-item clickable-item animate__animated animate__fadeInUp animate__delay-0-6s">
+      <ion-icon slot="start" name="mail-outline"></ion-icon>
+      <ion-label>
+        <p class="item-label">อีเมล</p>
+        <p class="item-value">Suthep.s&#64;cmu.ac.th</p>
+      </ion-label>
+      <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+    </ion-item>
+
+    <ion-item href="tel:0939536159" lines="none" class="contact-item clickable-item animate__animated animate__fadeInUp animate__delay-0-9s">
+      <ion-icon slot="start" name="call-outline"></ion-icon>
+      <ion-label>
+        <p class="item-label">โทรศัพท์</p>
+        <p class="item-value">093-953-6159</p>
+      </ion-label>
+      <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+    </ion-item>
+
+    <!-- <ion-item lines="none" class="contact-item clickable-item animate__animated animate__fadeInUp animate__delay-1-2s">
+      <ion-icon slot="start" name="location-outline"></ion-icon>
+      <ion-label>
+        <p class="item-label">ที่ตั้ง</p>
+        <p class="item-value">โรงพยาบาลมหาวิทยาลัยเชียงใหม่</p>
+        <p class="small-text">คลิกเพื่อเปิดแผนที่</p>
+      </ion-label>
+      <ion-button slot="end" fill="clear" color="primary" href="https://maps.app.goo.gl/YOUR_Maps_LINK" target="_blank">
+        <ion-icon slot="icon-only" name="navigate-outline"></ion-icon>
+      </ion-button>
+    </ion-item> -->
+
+    <!-- <div class="map-placeholder animate__animated animate__fadeInUp animate__delay-1-5s">
+      <img src="https://via.placeholder.com/600x200?text=Map+of+Chiang+Mai+University+Hospital" alt="Map of Chiang Mai University Hospital" />
+    </div> -->
+
+  </ion-list>
+
+  <div class="closing-statement ion-padding animate__animated animate__fadeInUp animate__delay-1-8s">
+    <p>เรามุ่งมั่นที่จะให้ข้อมูลและคำแนะนำที่เป็นประโยชน์แก่คุณ เพื่อสุขภาพที่ดีขึ้น</p>
+    <ion-button expand="block" routerLink="/care" class="primary-button-lg">
+      <ion-icon slot="start" name="medkit-outline"></ion-icon>
+      ดูคำแนะนำสุขภาพเพิ่มเติม
+    </ion-button>
+  </div>
+</ion-content>

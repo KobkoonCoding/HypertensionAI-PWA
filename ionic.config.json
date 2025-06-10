@@ -1,0 +1,7 @@
+{
+  "name": "hypertension-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

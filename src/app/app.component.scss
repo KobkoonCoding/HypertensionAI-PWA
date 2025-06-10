@@ -1,0 +1,58 @@
+.custom-menu {
+  --width: 280px; // Slightly wider for better spacing
+
+  ion-toolbar {
+    padding-left: 8px;
+    ion-title {
+      text-align: center;
+      font-size: 1.3rem; // Slightly larger menu title
+      font-weight: 700; // Bolder menu title
+      color: var(--ion-color-primary-contrast); // Ensure contrast
+    }
+
+    ion-button {
+      font-size: 1.5rem; // Slightly larger close button icon
+    }
+  }
+
+  .menu-content {
+    --background: linear-gradient(180deg, var(--ion-color-light) 0%, #f7faff 100%); // Subtle gradient for menu background
+    padding: 20px 16px; // More overall padding
+  }
+
+  .menu-list {
+    ion-item {
+      margin: 10px 0; // More vertical spacing between items
+      border-radius: 16px; // Larger border radius for items
+      --background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); // Slightly more prominent shadow
+      transition: all 0.3s ease-in-out; // Smoother transitions
+
+      ion-icon {
+        font-size: 1.6rem; // Larger icons
+        color: var(--ion-color-primary); // Use primary color for icons
+        margin-inline-end: 12px; // More space after icon
+      }
+
+      ion-label {
+        font-family: var(--ion-font-family);
+        font-size: 1.1rem; // Slightly larger label font
+        font-weight: 500;
+        color: var(--ion-color-dark);
+      }
+
+      &:hover {
+        transform: translateX(8px); // More noticeable hover effect
+        --background: #eaf6ff; // Light background on hover
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12); // Enhanced shadow on hover
+      }
+      &.activated { // Style for the currently active menu item
+        --background: var(--ion-color-primary-tint);
+        ion-label, ion-icon {
+          color: var(--ion-color-primary-contrast);
+        }
+        box-shadow: 0 4px 10px rgba(var(--ion-color-primary-rgb), 0.2);
+      }
+    }
+  }
+}

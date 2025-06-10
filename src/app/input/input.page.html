@@ -1,0 +1,156 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center app-title">บันทึกข้อมูลสุขภาพ</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="input-gradient-bg">
+  <div class="header-visual animate__animated animate__fadeInDown">
+    <ion-icon name="clipboard-outline" class="main-icon"></ion-icon>
+    <h1 class="ion-text-center">กรอกข้อมูลสุขภาพของคุณ</h1>
+    <p class="ion-text-center intro-text">
+      โปรดระบุข้อมูลส่วนบุคคลและสุขภาพเบื้องต้น เพื่อรับคำแนะนำที่แม่นยำ
+    </p>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="ion-padding">
+    <ion-card class="form-section-card animate__animated animate__fadeInUp animate__delay-0-3s">
+      <ion-card-header>
+        <ion-card-title>ข้อมูลส่วนตัว</ion-card-title>
+        <ion-card-subtitle>โปรดระบุข้อมูลพื้นฐานของคุณ</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item class="input-item">
+          <ion-label position="stacked">เพศ</ion-label>
+          <ion-select formControlName="gender" placeholder="เลือกเพศ" interface="popover">
+            <ion-select-option value="0">ชาย</ion-select-option>
+            <ion-select-option value="1">หญิง</ion-select-option>
+          </ion-select>
+          <ion-note *ngIf="form.controls['gender'].invalid && form.controls['gender'].touched" color="danger">
+            กรุณาเลือกเพศ
+          </ion-note>
+        </ion-item>
+
+        <ion-item class="input-item">
+          <ion-label position="stacked">อายุ (ปี)</ion-label>
+          <ion-input type="number" formControlName="age" placeholder="เช่น 30"></ion-input>
+          <ion-note *ngIf="form.controls['age'].invalid && form.controls['age'].touched" color="danger">
+            กรุณากรอกอายุ
+          </ion-note>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="form-section-card animate__animated animate__fadeInUp animate__delay-0-6s">
+      <ion-card-header>
+        <ion-card-title>สัญญาณชีพ</ion-card-title>
+        <ion-card-subtitle>ข้อมูลพื้นฐานที่สำคัญต่อสุขภาพ</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item class="input-item">
+          <ion-label position="stacked">อุณหภูมิ (°C)</ion-label>
+          <ion-input type="number" formControlName="temp" placeholder="เช่น 37.0"></ion-input>
+          <ion-button fill="clear" slot="end" size="small" id="temp-info-button">
+            <ion-icon name="information-circle-outline"></ion-icon>
+          </ion-button>
+          <ion-popover trigger="temp-info-button" triggerAction="click" side="bottom" alignment="end">
+            <ng-template>
+              <ion-content class="popover-content">
+                <p><strong>อุณหภูมิร่างกาย:</strong> ค่าที่บ่งชี้ถึงความร้อนของร่างกาย ควรอยู่ระหว่าง 36.1 - 37.2°C</p>
+              </ion-content>
+            </ng-template>
+          </ion-popover>
+          <ion-note *ngIf="form.controls['temp'].invalid && form.controls['temp'].touched" color="danger">
+            กรุณากรอกอุณหภูมิ
+          </ion-note>
+        </ion-item>
+
+        <ion-item class="input-item">
+          <ion-label position="stacked">ชีพจร (ครั้ง/นาที)</ion-label>
+          <ion-input type="number" formControlName="pulse" placeholder="เช่น 70"></ion-input>
+          <ion-button fill="clear" slot="end" size="small" id="pulse-info-button">
+            <ion-icon name="information-circle-outline"></ion-icon>
+          </ion-button>
+          <ion-popover trigger="pulse-info-button" triggerAction="click" side="bottom" alignment="end">
+            <ng-template>
+              <ion-content class="popover-content">
+                <p><strong>ชีพจร:</strong> อัตราการเต้นของหัวใจต่อนาที ปกติผู้ใหญ่จะอยู่ระหว่าง 60-100 ครั้ง/นาที</p>
+              </ion-content>
+            </ng-template>
+          </ion-popover>
+          <ion-note *ngIf="form.controls['pulse'].invalid && form.controls['pulse'].touched" color="danger">
+            กรุณากรอกชีพจร
+          </ion-note>
+        </ion-item>
+
+        <ion-item class="input-item">
+          <ion-label position="stacked">อัตราการหายใจ (ครั้ง/นาที)</ion-label>
+          <ion-input type="number" formControlName="rr" placeholder="เช่น 16"></ion-input>
+          <ion-button fill="clear" slot="end" size="small" id="rr-info-button">
+            <ion-icon name="information-circle-outline"></ion-icon>
+          </ion-button>
+          <ion-popover trigger="rr-info-button" triggerAction="click" side="bottom" alignment="end">
+            <ng-template>
+              <ion-content class="popover-content">
+                <p><strong>อัตราการหายใจ:</strong> จำนวนครั้งที่คุณหายใจในหนึ่งนาที ปกติผู้ใหญ่จะอยู่ที่ 12-20 ครั้ง/นาที</p>
+              </ion-content>
+            </ng-template>
+          </ion-popover>
+          <ion-note *ngIf="form.controls['rr'].invalid && form.controls['rr'].touched" color="danger">
+            กรุณากรอกอัตราการหายใจ
+          </ion-note>
+        </ion-item>
+
+        <ion-item class="input-item">
+          <ion-label position="stacked">ความอิ่มตัวของออกซิเจน (%)</ion-label>
+          <ion-input type="number" formControlName="o2" placeholder="เช่น 98"></ion-input>
+          <ion-button fill="clear" slot="end" size="small" id="o2-info-button">
+            <ion-icon name="information-circle-outline"></ion-icon>
+          </ion-button>
+          <ion-popover trigger="o2-info-button" triggerAction="click" side="bottom" alignment="end">
+            <ng-template>
+              <ion-content class="popover-content">
+                <p><strong>ความอิ่มตัวของออกซิเจน (SpO2):</strong> ปริมาณออกซิเจนในเลือด วัดด้วยเครื่องวัดออกซิเจนปลายนิ้ว ค่าปกติควรอยู่ที่ 95-100%</p>
+              </ion-content>
+            </ng-template>
+          </ion-popover>
+          <ion-note *ngIf="form.controls['o2'].invalid && form.controls['o2'].touched" color="danger">
+            กรุณากรอกค่าความอิ่มตัวของออกซิเจน
+          </ion-note>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="form-section-card animate__animated animate__fadeInUp animate__delay-0-9s">
+      <ion-card-header>
+        <ion-card-title>การวัดร่างกาย</ion-card-title>
+        <ion-card-subtitle>น้ำหนักและส่วนสูง</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item class="input-item">
+          <ion-label position="stacked">น้ำหนัก (กิโลกรัม)</ion-label>
+          <ion-input type="number" formControlName="weight" placeholder="เช่น 65"></ion-input>
+          <ion-note *ngIf="form.controls['weight'].invalid && form.controls['weight'].touched" color="danger">
+            กรุณากรอกน้ำหนัก
+          </ion-note>
+        </ion-item>
+
+        <ion-item class="input-item">
+          <ion-label position="stacked">ส่วนสูง (เซนติเมตร)</ion-label>
+          <ion-input type="number" formControlName="height" placeholder="เช่น 170"></ion-input>
+          <ion-note *ngIf="form.controls['height'].invalid && form.controls['height'].touched" color="danger">
+            กรุณากรอกส่วนสูง
+          </ion-note>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button expand="block" type="submit" color="success" [disabled]="form.invalid" class="submit-button animate__animated animate__fadeInUp animate__delay-1-2s">
+      <ion-icon slot="start" name="calculator-outline"></ion-icon>
+      รับผลการทำนาย
+    </ion-button>
+  </form>
+</ion-content>

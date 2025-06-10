@@ -1,0 +1,68 @@
+/* ---------- BACKGROUND ---------- */
+.result-gradient-bg {
+  --background: linear-gradient(180deg, #e0f2f7 0%, var(--ion-color-light) 100%);
+}
+
+/* ---------- LAYOUT ---------- */
+.result-container     { padding: 20px 15px; max-width: 900px; margin: 0 auto; }
+.result-card,
+.care-card,
+.guideline-card       { --background:#fff; border-radius:18px;
+                        box-shadow:0 4px 15px rgba(0,0,0,.08);
+                        padding:15px; margin-bottom:20px; }
+
+/* ---------- MAIN RESULT ---------- */
+.result-icon          { font-size:4rem; color:var(--ion-color-primary); margin-bottom:10px; }
+.prediction-text      { font-size:1.8rem; font-weight:700; margin-bottom:10px; line-height:1.3; }
+.low-risk-text        { color:var(--ion-color-success-shade); }
+.medium-risk-text     { color:var(--ion-color-warning); }
+.high-risk-text       { color:var(--ion-color-danger); }
+.probability-text     { font-size:1.1rem; color:var(--ion-color-medium); margin-bottom:20px; }
+.probability-value    { font-weight:600; color:var(--ion-color-dark); }
+
+/* ---------- DETAILS CARD ---------- */
+.details-card ion-list{ background:transparent; padding:0; }
+.details-card ion-item{ --background:transparent; font-size:.95rem; color:var(--ion-color-dark);
+                        --inner-padding-end:0; --inner-padding-start:0; --padding-start:0;
+                        p{ color:var(--ion-color-medium);} }
+
+/* ---------- RECOMMENDATION CARDS ---------- */
+.care-card            { transition:transform .3s, box-shadow .3s;
+                        &:hover{ transform:translateY(-5px);
+                                 box-shadow:0 8px 25px rgba(0,0,0,.15);} }
+
+.care-card ion-card-header{ display:flex; align-items:center; margin-bottom:10px; padding:0; }
+.care-card ion-icon       { font-size:2.2rem; color:var(--ion-color-primary); margin-inline-end:12px;}
+.care-card ion-card-title { font-size:1.3rem; font-weight:600; color:var(--ion-color-dark); }
+.care-card ion-card-content{ font-size:1rem; color:var(--ion-color-medium); line-height:1.6; padding:0; }
+
+.call-to-action-card   { border:2px solid var(--ion-color-tertiary);
+                         box-shadow:0 4px 15px rgba(var(--ion-color-tertiary-rgb), .2);
+                         ion-icon{ color:var(--ion-color-tertiary);} }
+.call-doctor-button    { --color:var(--ion-color-tertiary); margin-top:15px;
+                         font-weight:600; font-size:1.1rem; }
+
+/* ---------- NEW GUIDELINE CARD ---------- */
+.guideline-card ion-icon      { font-size:2.2rem; color:var(--ion-color-primary); margin-inline-end:12px; }
+.guideline-card ion-card-title{ font-size:1.3rem; font-weight:600; color:var(--ion-color-dark); }
+.guideline-card p             { font-size:1rem; color:var(--ion-color-medium); line-height:1.6;
+                                 margin-bottom:15px; }
+
+/* ---------- FOOTER ---------- */
+.footer-section        { padding:20px 15px; font-size:.95rem; color:var(--ion-color-medium); margin-top:20px;
+                         p{ margin-bottom:15px;} }
+.secondary-info-button { --color:var(--ion-color-primary); font-size:.95rem; font-weight:500;
+                         ion-icon{ margin-inline-end:5px;} }
+
+/* ---------- HEADINGS ---------- */
+.recommendation-heading{ font-size:1.5rem; font-weight:700; color:var(--ion-color-primary);
+                         margin-top:30px; margin-bottom:20px; }
+
+/* ---------- TOOLBAR ---------- */
+ion-toolbar.ion-no-border{ --border-width:0; }
+.app-title             { font-weight:700; font-size:1.3rem; color:var(--ion-color-primary-contrast); }
+
+/* ---------- NO-DATA MESSAGE ---------- */
+.no-data-message       { padding:50px 20px;
+                         ion-icon{ font-size:4rem; color:var(--ion-color-medium); margin-bottom:20px;}
+                         p{ font-size:1.1rem; color:var(--ion-color-medium); margin-bottom:30px;} }

@@ -1,0 +1,190 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/input"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center app-title">ผลการทำนาย</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="result-gradient-bg ion-padding">
+  <div *ngIf="predictionResult" class="result-container animate__animated animate__fadeInUp">
+
+    <!-- █ 1 ─ MAIN RESULT CARD -->
+    <ion-card class="result-card">
+      <ion-card-header>
+        <ion-card-title class="ion-text-center">ผลการทำนายสุขภาพของคุณ</ion-card-title>
+        <ion-card-subtitle class="ion-text-center">
+          อัปเดตเมื่อ: {{ resultTimestamp | date:'medium' }}
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content class="ion-text-center">
+        <ion-icon name="analytics-outline" class="result-icon"></ion-icon>
+
+        <h2 class="prediction-text"
+            [ngClass]="{
+              'low-risk-text'   : currentRiskLevel === 'low',
+              'medium-risk-text': currentRiskLevel === 'medium',
+              'high-risk-text'  : currentRiskLevel === 'high'
+            }">
+          {{ riskLevelText }}
+        </h2>
+
+        <p class="probability-text">
+          ด้วยความน่าจะเป็น:
+          <span class="probability-value">
+            {{ (predictionResult.probability * 100) | number:'1.2-2' }}%
+          </span>
+        </p>
+
+        <!-- 🔍 DETAILS TOGGLE -->
+        <ion-button expand="block"
+                    fill="outline"
+                    color="secondary"
+                    (click)="viewDetails()">
+          <ion-icon slot="start" name="information-circle-outline"></ion-icon>
+          {{ showDetails ? 'ซ่อนรายละเอียดข้อมูล' : 'ดูรายละเอียดข้อมูลที่คุณกรอก' }}
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- █ 2 ─ USER-INPUT DETAILS -->
+    <ion-card *ngIf="showDetails"
+              class="details-card animate__animated animate__fadeInUp">
+      <ion-card-header>
+        <ion-card-title>ข้อมูลที่คุณกรอก</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-list lines="none">
+          <ion-item>
+            <ion-label>เพศ:</ion-label>
+            <p slot="end">{{ predictionResult.inputData?.gender == 0 ? 'ชาย' : 'หญิง' }}</p>
+          </ion-item>
+          <ion-item>
+            <ion-label>อายุ:</ion-label>
+            <p slot="end">{{ predictionResult.inputData?.age }} ปี</p>
+          </ion-item>
+          <ion-item>
+            <ion-label>อุณหภูมิ:</ion-label>
+            <p slot="end">{{ predictionResult.inputData?.temp }} °C</p>
+          </ion-item>
+          <ion-item>
+            <ion-label>ชีพจร:</ion-label>
+            <p slot="end">{{ predictionResult.inputData?.pulse }} ครั้ง/นาที</p>
+          </ion-item>
+          <ion-item>
+            <ion-label>อัตราการหายใจ:</ion-label>
+            <p slot="end">{{ predictionResult.inputData?.rr }} ครั้ง/นาที</p>
+          </ion-item>
+          <ion-item>
+            <ion-label>O2 Sat:</ion-label>
+            <p slot="end">{{ predictionResult.inputData?.o2 }} %</p>
+          </ion-item>
+          <ion-item>
+            <ion-label>น้ำหนัก:</ion-label>
+            <p slot="end">{{ predictionResult.inputData?.weight }} kg</p>
+          </ion-item>
+          <ion-item>
+            <ion-label>ส่วนสูง:</ion-label>
+            <p slot="end">{{ predictionResult.inputData?.height }} cm</p>
+          </ion-item>
+        </ion-list>
+        <ion-item *ngIf="predictionResult.rawOutput">
+          <ion-label>Raw Output Probabilities:</ion-label>
+          <p slot="end">{{ predictionResult.rawOutput | json }}</p>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- █ 3 ─ RECOMMENDATIONS -->
+    <h3 *ngIf="filteredRecommendations.length > 0"
+        class="recommendation-heading animate__animated animate__fadeInUp">
+      คำแนะนำสำหรับคุณ
+    </h3>
+
+    <ion-card class="care-card animate__animated animate__fadeInUp"
+              *ngFor="let rec of filteredRecommendations; let i = index"
+              [style.--animate-delay]="(0.3 + i * 0.1) + 's'">
+      <ion-card-header>
+        <ion-icon [name]="rec.icon"></ion-icon>
+        <ion-card-title>{{ rec.title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{ rec.description }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- █ 4 ─ CALL-A-DOCTOR CARD -->
+    <ion-card class="care-card call-to-action-card animate__animated animate__fadeInUp"
+              [style.--animate-delay]="(0.3 + filteredRecommendations.length * 0.1) + 's'">
+      <ion-card-header>
+        <ion-icon name="alert-circle-outline"></ion-icon>
+        <ion-card-title>ปรึกษาแพทย์</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>หากมีอาการผิดปกติหรือข้อสงสัยใดๆ โปรดปรึกษาแพทย์ผู้เชี่ยวชาญทันที.</p>
+        <ion-button expand="block"
+                    fill="clear"
+                    color="tertiary"
+                    class="call-doctor-button"
+                    routerLink="/contact">
+          <ion-icon slot="start" name="call-outline"></ion-icon>
+          โทรปรึกษาแพทย์
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- █ 5 ─ NEW GUIDELINE DOWNLOAD CARD -->
+    <ion-card class="guideline-card animate__animated animate__fadeInUp"
+              [style.--animate-delay]="(0.3 + (filteredRecommendations.length + 1) * 0.1) + 's'">
+      <ion-card-header>
+        <ion-icon name="document-text-outline"></ion-icon>
+        <ion-card-title>ศึกษาเพิ่มเติม</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>
+          ดาวน์โหลดคู่มือ <strong>โรคความดันโลหิตสูง</strong><br>
+          จาก <em>สมาคมความดันโลหิตสูงแห่งประเทศไทย</em><br>
+          (แนวทางการรักษาโรคความดันโลหิตสูงในเวชปฏิบัติทั่วไป พ.ศ. 2567<br>
+          <small>2024 Thai Guidelines on the Treatment of Hypertension</small>)
+        </p>
+
+        <ion-button expand="block"
+                    fill="solid"
+                    color="primary"
+                    href="assets/pdfs/โรคความดันโลหิตสูง.pdf"
+                    download="โรคความดันโลหิตสูง.pdf">
+          <ion-icon slot="start" name="download-outline"></ion-icon>
+          ดาวน์โหลดเอกสาร (PDF)
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- █ 6 ─ FOOTER -->
+    <div class="footer-section ion-text-center animate__animated animate__fadeInUp"
+         [style.--animate-delay]="(0.3 + (filteredRecommendations.length + 2) * 0.1) + 's'">
+      <p>ข้อมูลนี้เป็นคำแนะนำเบื้องต้น โปรดปรึกษาผู้เชี่ยวชาญทางการแพทย์เพื่อคำแนะนำเฉพาะบุคคล</p>
+      <ion-button fill="clear"
+                  routerLink="/contact"
+                  class="secondary-info-button">
+        <ion-icon slot="start" name="information-circle-outline"></ion-icon>
+        ติดต่อเรา
+      </ion-button>
+    </div>
+  </div>
+
+  <!-- █ 7 ─ NO-DATA MESSAGE -->
+  <div *ngIf="!predictionResult"
+       class="no-data-message ion-text-center animate__animated animate__fadeIn">
+    <ion-icon name="alert-circle-outline"></ion-icon>
+    <p>ไม่พบข้อมูลการทำนาย กรุณากรอกข้อมูลในหน้า Input ก่อน</p>
+    <ion-button expand="block"
+                color="primary"
+                routerLink="/input">
+      <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+      กลับไปหน้า Input
+    </ion-button>
+  </div>
+</ion-content>
